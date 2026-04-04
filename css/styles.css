@@ -31,6 +31,9 @@
   --flow-honey: #f0e2c8;
   /* 昼セクション最下と夕方セクション最上で共通 */
   --flow-dusk: #e0a868;
+  /* 昼→夕：dusk から wood へ中間トーン（いきなり明るくしない） */
+  --flow-dusk-mid: #e4b078;
+  --flow-dusk-soft: #eac898;
   /* 夕方〜夜の境目用（本文は明るめ帯に載せ、境だけ短く暗転） */
   --flow-evening-rich: #9a5a00;
   --flow-evening-edge: #6b4528;
@@ -558,14 +561,15 @@ section#day.section--day {
   color: var(--day-accent);
 }
 
-/* Evening — #CC7000 基調。下は読みやすいアンバーを広く保ち、夜境界だけ短くくっきり暗転 */
+/* Evening — #CC7000 基調。上端は昼の --flow-dusk と同色からゆるやかに明るく（帯・縞を防ぐ） */
 .section--evening {
   background: linear-gradient(
     180deg,
     var(--flow-dusk) 0%,
-    #f2d4a8 6%,
-    var(--evening-wood) 14%,
-    #e0a040 24%,
+    var(--flow-dusk-mid) 7%,
+    var(--flow-dusk-soft) 14%,
+    var(--evening-wood) 22%,
+    #e0a040 28%,
     var(--evening-gold) 36%,
     #b36200 48%,
     var(--evening-gold-deep) 58%,
