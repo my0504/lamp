@@ -143,6 +143,13 @@ body {
   font-weight: 600;
   letter-spacing: 0.2em;
   text-align: center;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.site-header__brand:hover {
+  opacity: 0.88;
 }
 
 .site-header__nav {
