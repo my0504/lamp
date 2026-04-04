@@ -33,6 +33,9 @@
   </header>
 
   <main id="main">
+    <script>
+      document.documentElement.classList.add('js-main-fade-wait');
+    </script>
     <section id="hero" class="hero" aria-labelledby="hero-title">
       <div class="hero__inner">
         <p class="hero__label">三つの店舗、一つの物語</p>
@@ -303,6 +306,26 @@
 
   <script src="js/smooth-anchor-scroll.js"></script>
   <script>
+    (function () {
+      function revealMain() {
+        var root = document.documentElement;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          root.classList.remove('js-main-fade-wait');
+          return;
+        }
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            root.classList.remove('js-main-fade-wait');
+          });
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', revealMain);
+      } else {
+        revealMain();
+      }
+    })();
+
     document.getElementById('year').textContent = new Date().getFullYear();
 
     (function () {
