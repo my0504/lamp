@@ -1,0 +1,86 @@
+/* Splide 上書き：店舗別の枠・ドット（CDNの splide.min.css / splide-default を前提） */
+
+.store-splide {
+  width: 100%;
+  max-width: min(100%, 19rem);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* タブレット未満：1枚表示のままやや広げる */
+@media (min-width: 480px) and (max-width: 767px) {
+  .store-splide {
+    max-width: min(100%, 22rem);
+  }
+}
+
+/* 768px 以上：複数枚表示に合わせてコンテナをセクション幅まで拡張 */
+@media (min-width: 768px) {
+  .store-splide {
+    max-width: min(100%, 42rem);
+  }
+}
+
+.store-splide--day {
+  box-shadow:
+    0 0 0 1px rgba(196, 92, 42, 0.2),
+    0 4px 24px rgba(0, 0, 0, 0.1);
+}
+
+.store-splide--evening {
+  box-shadow:
+    0 0 0 1px rgba(245, 235, 224, 0.15),
+    0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+.store-splide--night {
+  box-shadow:
+    0 0 0 1px rgba(168, 85, 247, 0.25),
+    0 4px 28px rgba(0, 0, 0, 0.35);
+}
+
+.store-splide .splide__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 矢印（コンパクト表示用にやや小さく） */
+.store-splide .splide__arrow {
+  width: 1.65em;
+  height: 1.65em;
+  opacity: 0.92;
+}
+
+.store-splide .splide__arrow svg {
+  width: 1em;
+  height: 1em;
+}
+
+.store-splide .splide__arrow:hover {
+  opacity: 1;
+}
+
+.store-splide--day .splide__pagination__page.is-active {
+  background: #c45c2a;
+}
+
+.store-splide--evening .splide__pagination__page.is-active {
+  background: #f5ebe0;
+}
+
+.store-splide--night .splide__pagination__page.is-active {
+  background: #c084fc;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .store-splide .splide__track,
+  .store-splide .splide__list,
+  .store-splide .splide__slide {
+    transition-duration: 0ms !important;
+  }
+}
