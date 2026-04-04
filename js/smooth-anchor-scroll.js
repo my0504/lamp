@@ -1,9 +1,9 @@
 /**
- * 同一ページ内アンカー: 終端がなだらかな ease-out でスクロール（ヘッダー・ナビ用）
+ * 同一ページ内アンカー: ease-in-out で加減速が滑らかなスクロール（ヘッダー・ナビ用）
  */
 (function () {
-  function easeOutQuint(t) {
-    return 1 - Math.pow(1 - t, 5);
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
   }
 
   function getScrollPaddingTop() {
@@ -22,15 +22,15 @@
     var startY = window.pageYOffset;
     var delta = targetY - startY;
     var dist = Math.abs(delta);
-    /* 最短を長くしすぎると「動き出しが遅い」感じになる。終端は easeOutQuint のまま */
-    var duration = Math.min(950, Math.max(260, dist * 0.36));
+    /* 短すぎるとカクついて見えるため下限あり。係数は小さめ＝全体が軽く流れる */
+    var duration = Math.min(720, Math.max(200, dist * 0.28));
     var startTime = null;
 
     function step(now) {
       if (startTime === null) startTime = now;
       var elapsed = now - startTime;
       var t = Math.min(1, elapsed / duration);
-      var eased = easeOutQuint(t);
+      var eased = easeInOutCubic(t);
       window.scrollTo(0, startY + delta * eased);
       if (t < 1) requestAnimationFrame(step);
     }
