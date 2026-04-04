@@ -22,7 +22,8 @@
     var startY = window.pageYOffset;
     var delta = targetY - startY;
     var dist = Math.abs(delta);
-    var duration = Math.min(1300, Math.max(520, dist * 0.52));
+    /* 最短を長くしすぎると「動き出しが遅い」感じになる。終端は easeOutQuint のまま */
+    var duration = Math.min(950, Math.max(260, dist * 0.36));
     var startTime = null;
 
     function step(now) {

@@ -7,11 +7,14 @@
   --day-text: #f5ebe0;
   --day-text-muted: #e8d5c4;
 
-  --evening-bg: #f4f0e8;
-  --evening-wood: #ebe4d8;
+  /* 夕方: #FFD800 を基調 */
+  --evening-bg: #fff8e4;
+  --evening-wood: #ffec85;
   --evening-accent: #1e3a5f;
-  --evening-gold: #b8956c;
-  --evening-text: #2c2c2c;
+  --evening-gold: #ffd800;
+  --evening-gold-deep: #d4b800;
+  --evening-text: #2a2318;
+  --evening-text-muted: #5c4d38;
 
   --night-bg: #12151c;
   --night-surface: #1a1f2e;
@@ -23,8 +26,14 @@
   /* 昼→夕→夜をつなぐ連続グラデーション用（境界の色を一致） */
   --flow-day-top: #faf8f5;
   --flow-day-mid: #ede4d6;
-  --flow-bridge: #c9a882;
-  --flow-dusk: #a67c52;
+  /* 昼下辺: ベージュ → はちみつ色 → 黄へ段階的に */
+  --flow-bridge: #efe6d4;
+  --flow-honey: #f2e8b0;
+  /* 昼セクション最下と夕方セクション最上で共通（継ぎ目なし） */
+  --flow-dusk: #f5e060;
+  /* 夕方中央〜夜手前 */
+  --flow-evening-rich: #e6ca00;
+  --flow-evening-dark: #9a7f08;
   --flow-bar-mid: #6b4528;
   --flow-bar-deep: #3d2918;
   --flow-bar-bottom: #2c1e16;
@@ -327,14 +336,15 @@ body {
   opacity: 0.9;
 }
 
-/* Day — 夕方との境はごく狭い帯で急に切り替え */
+/* Day — 下端で黄へゆるやかに移行（夕方先頭の --flow-dusk と同じ色で継ぐ） */
 .section--day {
   background: linear-gradient(
     180deg,
     var(--flow-day-top) 0%,
     var(--flow-day-mid) 8%,
-    var(--flow-day-mid) 90%,
-    var(--flow-bridge) 95%,
+    var(--flow-day-mid) 76%,
+    var(--flow-bridge) 84%,
+    var(--flow-honey) 90%,
     var(--flow-dusk) 100%
   );
   color: var(--evening-text);
@@ -411,9 +421,9 @@ body {
 
 .section__visual--evening {
   background-image:
-    linear-gradient(135deg, rgba(196, 92, 42, 0.35) 0%, transparent 50%),
-    linear-gradient(180deg, #5c3d24 0%, #3d2918 100%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    linear-gradient(135deg, rgba(255, 216, 0, 0.5) 0%, transparent 55%),
+    linear-gradient(180deg, #ffd800 0%, #b89800 100%);
+  box-shadow: inset 0 0 0 1px rgba(42, 35, 24, 0.08);
 }
 
 .section__visual--night {
@@ -495,30 +505,33 @@ body {
   color: var(--day-accent);
 }
 
-/* Evening — 木目風の repeating 線は見え方を損なうため使わず単色グラデのみ */
+/* Evening — 先頭は必ず --flow-dusk（昼の最下と同一）。薄いクリームへ戻さず黄→#FFD800→夜へ */
 .section--evening {
   background: linear-gradient(
     180deg,
     var(--flow-dusk) 0%,
-    var(--flow-bar-mid) 3%,
-    var(--flow-bar-deep) 6%,
-    var(--flow-bar-deep) 90%,
-    var(--flow-bar-bottom) 95%,
+    #ffe866 6%,
+    var(--evening-wood) 16%,
+    var(--evening-gold) 32%,
+    var(--flow-evening-rich) 52%,
+    var(--evening-gold-deep) 70%,
+    var(--flow-evening-dark) 86%,
+    var(--flow-bar-bottom) 96%,
     var(--flow-bar-bottom) 100%
   );
-  color: var(--day-text);
+  color: var(--evening-text);
 }
 
 .section--evening .section__title-en {
-  color: var(--day-text-muted);
+  color: var(--evening-text-muted);
 }
 
 .section--evening .section__tagline {
-  color: var(--day-text-muted);
+  color: var(--evening-text-muted);
 }
 
 .section--evening .info-dl__row {
-  border-color: rgba(245, 235, 224, 0.15);
+  border-color: rgba(42, 35, 24, 0.14);
 }
 
 .drink-highlights {
@@ -529,6 +542,120 @@ body {
 
 .drink-highlights li {
   margin-bottom: 0.35rem;
+}
+
+/* THREE LAMPS TIME：料金目安・持ち込み */
+.evening-offers {
+  margin: 0 0 1.5rem;
+  padding: 1.1rem 1rem 1.15rem;
+  border: 1px solid rgba(42, 35, 24, 0.12);
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 250, 235, 0.35) 100%
+  );
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+}
+
+.evening-offers__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+
+@media (min-width: 420px) {
+  .evening-offers__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .evening-offers__cell {
+    padding: 0 0.85rem;
+  }
+
+  .evening-offers__cell:not(:last-child) {
+    border-right: 1px solid rgba(42, 35, 24, 0.1);
+  }
+
+  .evening-offers__cell:first-child {
+    padding-left: 0;
+  }
+
+  .evening-offers__cell:last-child {
+    padding-right: 0;
+  }
+}
+
+.evening-offers__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.2rem;
+}
+
+.evening-offers__eyebrow {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--evening-text-muted);
+  opacity: 0.85;
+}
+
+.evening-offers__price {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--evening-text);
+  line-height: 1.2;
+}
+
+.evening-offers__currency {
+  font-size: 0.75em;
+  font-weight: 500;
+  opacity: 0.88;
+  margin-right: 0.02em;
+}
+
+.evening-offers__from {
+  font-size: 0.65em;
+  font-weight: 500;
+  opacity: 0.75;
+  margin-left: 0.02em;
+}
+
+.evening-offers__hint {
+  font-size: 0.75rem;
+  color: var(--evening-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.evening-offers__cell--bring .evening-offers__bring {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--evening-text);
+  line-height: 1.35;
+}
+
+.evening-offers__bring-mark {
+  display: inline-block;
+  margin-left: 0.35em;
+  padding: 0.1em 0.45em 0.12em;
+  font-family: var(--font-sans);
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  vertical-align: 0.08em;
+  color: var(--evening-accent);
+  border: 1px solid rgba(30, 58, 95, 0.35);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.55);
 }
 
 /* Night — 同上、細線テクスチャなし */
@@ -689,6 +816,23 @@ body {
   margin: 0 0 1rem;
   font-size: 0.9375rem;
   line-height: 1.6;
+}
+
+.access-card__map-wrap {
+  position: relative;
+  width: 100%;
+  margin: 0 0 0.5rem;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  background: #e8e8e4;
+  aspect-ratio: 16 / 10;
+}
+
+.access-card__map-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .access-card__map {

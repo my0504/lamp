@@ -32,8 +32,8 @@
 
 .store-splide--evening {
   box-shadow:
-    0 0 0 1px rgba(245, 235, 224, 0.15),
-    0 4px 24px rgba(0, 0, 0, 0.25);
+    0 0 0 1px rgba(42, 35, 24, 0.1),
+    0 4px 24px rgba(180, 150, 0, 0.28);
 }
 
 .store-splide--night {
@@ -70,7 +70,7 @@
 }
 
 .store-splide--evening .splide__pagination__page.is-active {
-  background: #f5ebe0;
+  background: #1e3a5f;
 }
 
 .store-splide--night .splide__pagination__page.is-active {
