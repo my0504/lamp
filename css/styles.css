@@ -84,7 +84,7 @@ main#main {
   margin: 0;
   padding: 0;
   opacity: 1;
-  transition: opacity 0.72s ease-out;
+  transition: opacity 1.45s ease-out;
 }
 
 html.js-main-fade-wait main#main {
