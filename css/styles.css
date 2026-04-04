@@ -213,25 +213,33 @@ main#main {
   padding: max(0.85rem, calc(1.65rem - env(safe-area-inset-top, 0px) * 0.4))
     max(1.25rem, env(safe-area-inset-right, 0px)) 2rem max(1.25rem, env(safe-area-inset-left, 0px));
   overflow-x: hidden;
-  background:
-    linear-gradient(165deg, rgba(61, 41, 24, 0.88) 0%, rgba(92, 61, 36, 0.75) 45%, rgba(30, 58, 95, 0.35) 100%),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.04) 2px,
-      rgba(0, 0, 0, 0.04) 3px
+  background-color: #3d2918;
+  background-image:
+    linear-gradient(
+      165deg,
+      rgba(42, 30, 22, 0.45) 0%,
+      rgba(55, 40, 28, 0.38) 42%,
+      rgba(28, 38, 58, 0.28) 100%
     ),
-    linear-gradient(105deg, #4a3220 0%, #6b4528 40%, #3d2918 100%);
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 0%, rgba(18, 12, 10, 0.36) 100%),
+    url("../images/IMG_8930.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: var(--day-text);
 }
 
 .hero__inner {
+  position: relative;
+  z-index: 0;
   width: 100%;
   max-width: var(--max-w);
   margin-left: 0;
   margin-right: auto;
   text-align: start;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.55),
+    0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 .hero__label {
