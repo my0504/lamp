@@ -143,9 +143,19 @@ body {
   font-weight: 600;
   letter-spacing: 0.2em;
   text-align: center;
-  color: inherit;
+  color: var(--evening-text);
   text-decoration: none;
+  -webkit-text-decoration: none;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site-header__brand:link,
+.site-header__brand:visited,
+.site-header__brand:active {
+  color: var(--evening-text);
+  text-decoration: none;
+  -webkit-text-decoration: none;
 }
 
 .site-header__brand:hover {
