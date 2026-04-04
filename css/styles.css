@@ -7,14 +7,14 @@
   --day-text: #f5ebe0;
   --day-text-muted: #e8d5c4;
 
-  /* 夕方: #FFD800 を基調 */
-  --evening-bg: #fff8e4;
-  --evening-wood: #ffec85;
+  /* 夕方: #CC7000 を基調のアンバー */
+  --evening-bg: #fdf2e6;
+  --evening-wood: #f0d4a8;
   --evening-accent: #1e3a5f;
-  --evening-gold: #ffd800;
-  --evening-gold-deep: #d4b800;
+  --evening-gold: #cc7000;
+  --evening-gold-deep: #a35c00;
   --evening-text: #2a2318;
-  --evening-text-muted: #5c4d38;
+  --evening-text-muted: #5a4030;
 
   --night-bg: #12151c;
   --night-surface: #1a1f2e;
@@ -26,14 +26,14 @@
   /* 昼→夕→夜をつなぐ連続グラデーション用（境界の色を一致） */
   --flow-day-top: #faf8f5;
   --flow-day-mid: #ede4d6;
-  /* 昼下辺: ベージュ → はちみつ色 → 黄へ段階的に */
+  /* 昼下辺 → #CC7000 系へ */
   --flow-bridge: #efe6d4;
-  --flow-honey: #f2e8b0;
-  /* 昼セクション最下と夕方セクション最上で共通（継ぎ目なし） */
-  --flow-dusk: #f5e060;
-  /* 夕方中央〜夜手前 */
-  --flow-evening-rich: #e6ca00;
-  --flow-evening-dark: #9a7f08;
+  --flow-honey: #f0e2c8;
+  /* 昼セクション最下と夕方セクション最上で共通 */
+  --flow-dusk: #e0a868;
+  /* 夕方〜夜の境目用（本文は明るめ帯に載せ、境だけ短く暗転） */
+  --flow-evening-rich: #9a5a00;
+  --flow-evening-edge: #6b4528;
   --flow-bar-mid: #6b4528;
   --flow-bar-deep: #3d2918;
   --flow-bar-bottom: #2c1e16;
@@ -451,9 +451,9 @@ section#day.section--day {
 
 .section__visual--evening {
   background-image:
-    linear-gradient(135deg, rgba(255, 216, 0, 0.5) 0%, transparent 55%),
-    linear-gradient(180deg, #ffd800 0%, #b89800 100%);
-  box-shadow: inset 0 0 0 1px rgba(42, 35, 24, 0.08);
+    linear-gradient(135deg, rgba(204, 112, 0, 0.42) 0%, transparent 55%),
+    linear-gradient(180deg, #d99020 0%, #8b5208 100%);
+  box-shadow: inset 0 0 0 1px rgba(60, 35, 18, 0.12);
 }
 
 .section__visual--night {
@@ -535,18 +535,22 @@ section#day.section--day {
   color: var(--day-accent);
 }
 
-/* Evening — 先頭は必ず --flow-dusk（昼の最下と同一）。薄いクリームへ戻さず黄→#FFD800→夜へ */
+/* Evening — #CC7000 基調。下は読みやすいアンバーを広く保ち、夜境界だけ短くくっきり暗転 */
 .section--evening {
   background: linear-gradient(
     180deg,
     var(--flow-dusk) 0%,
-    #ffe866 6%,
-    var(--evening-wood) 16%,
-    var(--evening-gold) 32%,
-    var(--flow-evening-rich) 52%,
-    var(--evening-gold-deep) 70%,
-    var(--flow-evening-dark) 86%,
-    var(--flow-bar-bottom) 96%,
+    #f2d4a8 6%,
+    var(--evening-wood) 14%,
+    #e0a040 24%,
+    var(--evening-gold) 36%,
+    #b36200 48%,
+    var(--evening-gold-deep) 58%,
+    var(--flow-evening-rich) 70%,
+    #8b5208 78%,
+    #7a4808 86%,
+    var(--flow-evening-edge) 91%,
+    var(--flow-bar-bottom) 96.5%,
     var(--flow-bar-bottom) 100%
   );
   color: var(--evening-text);
@@ -582,10 +586,10 @@ section#day.section--day {
   border-radius: 0.5rem;
   background: linear-gradient(
     145deg,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(255, 250, 235, 0.35) 100%
+    rgba(255, 255, 255, 0.48) 0%,
+    rgba(255, 230, 210, 0.4) 100%
   );
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.42) inset;
 }
 
 .evening-offers__grid {
@@ -688,13 +692,13 @@ section#day.section--day {
   background: rgba(255, 255, 255, 0.55);
 }
 
-/* Night — 同上、細線テクスチャなし */
+/* Night — 夕方との継ぎ目をくっきり（手前で既に暗色のため、すぐ夜のトーンへ） */
 .section--night {
   background: linear-gradient(
     180deg,
     var(--flow-bar-bottom) 0%,
-    var(--flow-night-top) 3%,
-    var(--flow-night-mid) 6%,
+    var(--flow-night-top) 1.25%,
+    var(--flow-night-mid) 4%,
     var(--flow-night-mid) 94%,
     var(--flow-night-bottom) 100%
   );
