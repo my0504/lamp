@@ -160,10 +160,10 @@ html.js-main-fade-wait main#main {
 
 .site-header__brand {
   margin: 0;
-  font-family: var(--font-display);
+  font-family: "Zen Maru Gothic", var(--font-display);
   font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-align: center;
   color: var(--evening-text);
   text-decoration: none;
