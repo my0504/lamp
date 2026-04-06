@@ -1,11 +1,12 @@
 (function () {
   'use strict';
 
-  function getOptions() {
+  function getOptions(root) {
     var reduced =
       window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var isFood = root && root.id === 'splide-day-food';
 
-    return {
+    var options = {
       type: 'loop',
       rewind: true,
       /* 既定は max-width（PC向け）のため、SPで複数枚になる。min にしてモバイルファーストにする */
@@ -31,9 +32,9 @@
       arrows: true,
       pagination: true,
       paginationKeyboard: true,
-      cover: true,
+      cover: !isFood,
       /* 高さ = 幅 × heightRatio（小さめの表示） */
-      heightRatio: 0.48,
+      heightRatio: isFood ? 0.64 : 0.48,
       keyboard: true,
       i18n: {
         prev: '前の写真へ',
@@ -50,6 +51,17 @@
         slideLabel: '%s / %s',
       },
     };
+
+    if (isFood) {
+      /* 料理スライドは SP で説明文を確実に表示 */
+      options.perPage = 1;
+      options.breakpoints = {};
+      options.autoHeight = true;
+      options.autoplay = false;
+      delete options.heightRatio;
+    }
+
+    return options;
   }
 
   function mountSplide(root) {
@@ -57,7 +69,7 @@
     if (typeof Splide === 'undefined') return;
 
     root.setAttribute('data-splide-mounted', '1');
-    var splide = new Splide(root, getOptions());
+    var splide = new Splide(root, getOptions(root));
     splide.mount();
 
     window.requestAnimationFrame(function () {
@@ -84,7 +96,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     if (typeof Splide === 'undefined') return;
 
-    ['#splide-day', '#splide-evening', '#splide-night'].forEach(function (selector) {
+    ['#splide-day', '#splide-day-food', '#splide-evening', '#splide-night'].forEach(function (selector) {
       var root = document.querySelector(selector);
       if (!root) return;
 

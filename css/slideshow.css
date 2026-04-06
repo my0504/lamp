@@ -10,6 +10,10 @@
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
 }
 
+.store-splide + .store-splide {
+  margin-top: 0.8rem;
+}
+
 /* タブレット未満：1枚表示のままやや広げる */
 @media (min-width: 480px) and (max-width: 767px) {
   .store-splide {
@@ -47,6 +51,80 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.store-splide--food .splide__slide {
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.section__text + .store-splide--food {
+  margin-top: 0.95rem;
+}
+
+.food-slide {
+  margin: 0;
+}
+
+.food-slide img {
+  width: 100%;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+}
+
+.food-slide__caption {
+  display: block;
+  padding: 0.6rem 0.7rem 0.72rem;
+}
+
+.food-slide__title {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.food-slide__field {
+  display: block;
+  margin-top: 0.35rem;
+  padding: 0.35rem 0.42rem;
+  border: 1px solid rgba(42, 35, 24, 0.14);
+  border-radius: 0.35rem;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.food-slide__label {
+  display: block;
+  margin-bottom: 0.08rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: rgba(42, 35, 24, 0.72);
+}
+
+.food-slide__value {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: rgba(42, 35, 24, 0.86);
+}
+
+@media (max-width: 479px) {
+  .food-slide__caption {
+    padding: 0.52rem 0.58rem 0.62rem;
+  }
+
+  .food-slide__title {
+    font-size: 0.84rem;
+  }
+
+  .food-slide__label {
+    font-size: 0.66rem;
+  }
+
+  .food-slide__value {
+    font-size: 0.74rem;
+    line-height: 1.45;
+  }
 }
 
 /* 矢印（コンパクト表示用にやや小さく） */
