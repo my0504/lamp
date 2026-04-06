@@ -113,6 +113,17 @@
   color: rgba(42, 35, 24, 0.92);
 }
 
+/* 料理スライドは説明文が長いので、ページネーションを本文下へ退避 */
+.store-splide--food .splide__pagination {
+  position: static;
+  margin-top: 0.35rem;
+  padding: 0 0 0.25rem;
+}
+
+.store-splide--food .splide__pagination__page {
+  transform: none;
+}
+
 @media (max-width: 479px) {
   .food-slide__caption {
     padding: 0.52rem 0.58rem 0.62rem;
