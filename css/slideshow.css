@@ -85,20 +85,23 @@
 
 .food-slide__field {
   display: block;
-  margin-top: 0.35rem;
-  padding: 0.35rem 0.42rem;
-  border: 1px solid rgba(42, 35, 24, 0.14);
+  margin-top: 0.42rem;
+  padding: 0.44rem 0.5rem 0.48rem;
+  border: 1px solid rgba(196, 92, 42, 0.18);
   border-radius: 0.35rem;
-  background: rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .food-slide__label {
-  display: block;
-  margin-bottom: 0.08rem;
-  font-size: 0.68rem;
+  display: inline-block;
+  margin-bottom: 0.24rem;
+  padding: 0.12rem 0.38rem;
+  border-radius: 999px;
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.03em;
-  color: rgba(42, 35, 24, 0.72);
+  letter-spacing: 0.08em;
+  color: #8e4a24;
+  background: rgba(196, 92, 42, 0.12);
 }
 
 .food-slide__value {
@@ -118,7 +121,7 @@
   }
 
   .food-slide__label {
-    font-size: 0.66rem;
+    font-size: 0.58rem;
   }
 
   .food-slide__value {
@@ -127,20 +130,42 @@
   }
 }
 
-/* 矢印（コンパクト表示用にやや小さく） */
+/* 矢印（灰丸から、薄ガラス風のミニマルUIへ） */
 .store-splide .splide__arrow {
-  width: 1.65em;
-  height: 1.65em;
-  opacity: 0.92;
+  width: 2.05rem;
+  height: 2.05rem;
+  border: 1.4px solid rgba(255, 255, 255, 0.78);
+  background: transparent;
+  box-shadow: none;
+  opacity: 1;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease;
 }
 
 .store-splide .splide__arrow svg {
-  width: 1em;
-  height: 1em;
+  width: 0.82rem;
+  height: 0.82rem;
+  fill: rgba(255, 255, 255, 0.92);
 }
 
 .store-splide .splide__arrow:hover {
-  opacity: 1;
+  transform: translateY(-1px) scale(1.03);
+  border-color: #fff;
+  opacity: 0.95;
+}
+
+.store-splide .splide__arrow:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 1px;
+}
+
+@media (max-width: 479px) {
+  .store-splide .splide__arrow {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
 }
 
 .store-splide--day .splide__pagination__page.is-active {
