@@ -257,6 +257,35 @@
             <dd>クレジットカード各種、QRコード決済（PayPay 等）ご利用いただけます</dd>
           </div>
         </dl>
+        <figure class="menu-photo-card">
+          <figcaption class="menu-photo-card__title">Menu Photo</figcaption>
+          <button
+            type="button"
+            class="menu-photo-card__button"
+            data-menu-photo-open
+            aria-label="BOTANのメニュー画像を拡大表示"
+          >
+            <img
+              class="menu-photo-card__img"
+              src="https://tblg.k-img.com/restaurant/images/Rvw/316513/640x640_rect_ed971b653068e19df2e2fa09b80487a3.jpg"
+              alt="BOTANのメニュー写真"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+        </figure>
+        <dialog class="menu-photo-modal" data-menu-photo-modal aria-label="BOTANのメニュー画像 拡大表示">
+          <form method="dialog" class="menu-photo-modal__close-wrap">
+            <button class="menu-photo-modal__close" type="submit" aria-label="閉じる">×</button>
+          </form>
+          <img
+            class="menu-photo-modal__img"
+            src="https://tblg.k-img.com/restaurant/images/Rvw/316513/640x640_rect_ed971b653068e19df2e2fa09b80487a3.jpg"
+            alt="BOTANのメニュー写真（拡大）"
+            loading="lazy"
+            decoding="async"
+          />
+        </dialog>
         <p class="section__links">
           <a class="btn btn--day" href="https://tabelog.com/kanagawa/A1401/A140204/14097723/dtlphotolst/smp2/" target="_blank" rel="noopener noreferrer">食べログで写真を見る</a>
         </p>
@@ -519,6 +548,20 @@
 
       sections.forEach(function (section) {
         observer.observe(section);
+      });
+    })();
+
+    (function () {
+      var openBtn = document.querySelector('[data-menu-photo-open]');
+      var modal = document.querySelector('[data-menu-photo-modal]');
+      if (!openBtn || !modal || typeof modal.showModal !== 'function') return;
+
+      openBtn.addEventListener('click', function () {
+        modal.showModal();
+      });
+
+      modal.addEventListener('click', function (event) {
+        if (event.target === modal) modal.close();
       });
     })();
   </script>

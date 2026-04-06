@@ -826,6 +826,74 @@ section#day.section--day {
   background: #c084fc;
 }
 
+/* Day: menu photo (tap to enlarge) */
+.menu-photo-card {
+  margin: 0 0 1rem;
+}
+
+.menu-photo-card__title {
+  margin: 0 0 0.42rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(42, 35, 24, 0.72);
+}
+
+.menu-photo-card__button {
+  width: 100%;
+  display: block;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  cursor: zoom-in;
+}
+
+.menu-photo-card__img {
+  display: block;
+  width: 100%;
+  max-width: min(100%, 22rem);
+  margin: 0 auto;
+  height: auto;
+}
+
+.menu-photo-modal {
+  width: min(92vw, 44rem);
+  max-width: 44rem;
+  border: 0;
+  padding: 0.45rem;
+  border-radius: 0.6rem;
+  background: #151515;
+}
+
+.menu-photo-modal::backdrop {
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.menu-photo-modal__close-wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu-photo-modal__close {
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 1.45rem;
+  line-height: 1;
+  padding: 0 0.2rem;
+  cursor: pointer;
+}
+
+.menu-photo-modal__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.45rem;
+}
+
 /* Access */
 .section--access {
   background: var(--access-bg);
