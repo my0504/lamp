@@ -54,7 +54,7 @@
 }
 
 .store-splide--food .splide__slide {
-  background: rgba(255, 255, 255, 0.58);
+  background: linear-gradient(160deg, rgba(255, 252, 248, 0.74) 0%, rgba(247, 236, 222, 0.62) 100%);
 }
 
 .section__text + .store-splide--food {
@@ -74,6 +74,7 @@
 .food-slide__caption {
   display: block;
   padding: 0.6rem 0.7rem 0.72rem;
+  background: linear-gradient(180deg, rgba(255, 248, 238, 0.62) 0%, rgba(247, 234, 217, 0.46) 100%);
 }
 
 .food-slide__title {
@@ -86,29 +87,30 @@
 .food-slide__field {
   display: block;
   margin-top: 0.42rem;
-  padding: 0.44rem 0.5rem 0.48rem;
-  border: 1px solid rgba(196, 92, 42, 0.18);
-  border-radius: 0.35rem;
-  background: rgba(255, 255, 255, 0.72);
+  padding: 0.4rem 0.12rem 0.12rem;
+  border-top: 1px solid rgba(196, 92, 42, 0.26);
+  border-radius: 0;
+  background: transparent;
 }
 
 .food-slide__label {
   display: inline-block;
-  margin-bottom: 0.24rem;
-  padding: 0.12rem 0.38rem;
-  border-radius: 999px;
-  font-size: 0.62rem;
+  margin-bottom: 0.2rem;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.58rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #8e4a24;
-  background: rgba(196, 92, 42, 0.12);
+  letter-spacing: 0.12em;
+  color: rgba(150, 85, 45, 0.92);
+  background: transparent;
+  text-transform: uppercase;
 }
 
 .food-slide__value {
   display: block;
   font-size: 0.78rem;
-  line-height: 1.55;
-  color: rgba(42, 35, 24, 0.86);
+  line-height: 1.52;
+  color: rgba(42, 35, 24, 0.92);
 }
 
 @media (max-width: 479px) {
